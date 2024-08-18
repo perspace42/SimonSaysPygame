@@ -1,3 +1,21 @@
+'''
+Author: Scott Field
+Date: 8/17/2024
+Version: 1.0
+Purpose:
+Create a Simon Says game using Python with the following features:
+- A start screen that allows the user to:
+    1: Begin Game
+    2: Set Game To Either Close If the User Loses a Round or to Continue Until Exit button (game screen) pressed
+- A game screen that allows the user to:
+    1: Play Simon Says
+        - Outputs whether user choices are correct using text
+        - Visually Counts down the time the user has to make choices (DONE)
+        - Logs number of 
+        - Exits if user makes an incorrect choice
+        - Exits if user selects an exit button
+'''
+
 import pygame
 import random
 import time
@@ -20,7 +38,6 @@ YELLOW_OFF = (227, 227, 0)
 
 CLOCK = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-FONT = pygame.font.Font(None,36)
 
 # Pass in respective sounds for each color
 GREEN_SOUND = pygame.mixer.Sound("sounds/bell1.mp3") # bell1
@@ -148,6 +165,9 @@ Checks if player's move matches the cpu pattern sequence
 def check_sequence(players_sequence):
     if players_sequence != cpu_sequence[:len(players_sequence)]:
         game_over()
+    else:
+        timer_label.clear(SCREEN)
+
 
 '''
 Quits game and closes pygame window

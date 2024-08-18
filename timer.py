@@ -2,32 +2,39 @@ import pygame
 
 class Label:
     def __init__(self, fontPath=None, size=36, color=(255, 255, 255), position=(10, 10)):
-        # Create a font object instead of inheriting
-        self.font = pygame.font.Font(fontPath, size)
         self.color = color
         self.position = position
         self.currentDigit = 0
-        self.surface = self.font.render(str(self.currentDigit), True, self.color)
+        self.font = pygame.font.Font(fontPath, size)
+        self.surface = self.update_text("")
 
-    # Print the current time to the screen, then fade the printed time digit until a new digit is printed
+    # Print the current time to the screen.
     def update_time(self, screen, time_left):
         # If a new digit has been passed to the function
         if self.currentDigit != time_left or self.currentDigit == 0:
             #Clear the old digit with a black rectangle
-            rect = self.surface.get_rect(topleft = self.position)
-            pygame.draw.rect(screen,(0,0,0),rect)
+            self.clear(screen)
             # Set the current digit equal to the new digit
             self.currentDigit = time_left
             # Reset the color to white
             self.color = (255, 255, 255)
         
         # Set the surface with the current digit
-        self.surface = self.font.render(str(self.currentDigit), True, self.color)
+        self.update_text(str(self.currentDigit))
         # Draw the digit
-        self.draw(screen,self.surface)
+        self.draw(screen)
 
-    def draw(self, screen, surface):
-        screen.blit(surface, self.position)
+    def draw(self, screen):
+        screen.blit(self.surface, self.position)
+
+    #Clear the old digit with a black rectangle
+    def clear(self, screen):
+        rect = self.surface.get_rect(topleft = self.position)
+        pygame.draw.rect(screen,(0,0,0),rect)
+
+    def update_text(self,text):
+        self.surface = self.font.render(text, True, self.color)
+        return self.surface
 
 # Test of TimerLabel
 if __name__ == "__main__":
