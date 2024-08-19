@@ -7,7 +7,7 @@ class Label:
         self.currentDigit = 0
         self.font = pygame.font.Font(fontPath, size)
         self.surface = self.update_text("")
-
+    
     # Print the current time to the screen.
     def update_time(self, screen, time_left):
         # If a new digit has been passed to the function

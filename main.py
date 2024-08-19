@@ -11,7 +11,7 @@ Create a Simon Says game using Python with the following features:
     1: Play Simon Says
         - Outputs whether user choices are correct using text
         - Visually Counts down the time the user has to make choices (DONE)
-        - Logs number of 
+        - Logs number of correct guesses as score (DONE)
         - Exits if user makes an incorrect choice
         - Exits if user selects an exit button
 '''
@@ -21,7 +21,7 @@ import random
 import time
 # By importing Button we can access methods from the Button class
 from button import Button
-from timer import Label
+from label import Label
 pygame.init()
 
 # Constants
@@ -53,6 +53,12 @@ yellow = Button(YELLOW_ON, YELLOW_OFF, YELLOW_SOUND, 760, 400)
 
 #Timer Label
 timer_label = Label(position = (485,350), size = 72)
+
+#Score Label
+score_label = Label()
+score_label.update_text("Score: 0")
+score_label.currentDigit = 0
+score_label.draw(SCREEN)
 
 # Variables
 colors = ["green", "red", "blue", "yellow"]
@@ -164,8 +170,22 @@ Checks if player's move matches the cpu pattern sequence
 '''
 def check_sequence(players_sequence):
     if players_sequence != cpu_sequence[:len(players_sequence)]:
+        #Update Score
+        score_label.currentDigit -= 1
+        score_label.clear(SCREEN)
+        score_label.update_text(f"Score: {score_label.currentDigit}")
+        score_label.draw(SCREEN)
+        #End Game
         game_over()
     else:
+        if len(players_sequence) == len(cpu_sequence):
+            #Update Score
+            score_label.currentDigit += 1
+            score_label.clear(SCREEN)
+            score_label.update_text(f"Score: {score_label.currentDigit}")
+            score_label.draw(SCREEN)
+
+        #Clear Timer
         timer_label.clear(SCREEN)
 
 
