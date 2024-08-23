@@ -6,6 +6,10 @@ Python 3.12.3
 
 Pygame 2.6.0 (SDL 2.28.4)
 
+## How To Run
+1: Navigate to the Project Directory
+2: Run main.py with the command: python main.py
+
 ## How To Play
 1: Each round, the game will play a sequence of lights and sounds that will increase in length with each successful attempt.
 Listen carefully to the sounds associated with each button as they light up.
