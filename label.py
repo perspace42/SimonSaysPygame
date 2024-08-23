@@ -1,3 +1,11 @@
+'''
+Author: Scott Field
+Date: 8/23/2024
+Version: 1.0
+Purpose:
+Create a label that can be used to display on the screen and track a number to each label for
+score or other computations
+'''
 import pygame
 
 class Label:
@@ -20,7 +28,7 @@ class Label:
             self.color = (255, 255, 255)
         
         # Set the surface with the current digit
-        self.update_text(str(self.currentDigit))
+        self.surface = self.update_text(str(self.currentDigit))
         # Draw the digit
         self.draw(screen)
 

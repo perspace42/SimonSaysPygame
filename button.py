@@ -28,6 +28,13 @@ class Button(pygame.sprite.Sprite):
         screen.blit(self.image,(self.rect.x, self.rect.y))
 
     '''
+    Clears button sprite from the screen
+    '''
+    def clear(self,screen):
+        rect = pygame.Rect(self.xCor, self.yCor, self.rect.width, self.rect.height)
+        pygame.draw.rect(screen,(0,0,0),rect)
+
+    '''
     Used to check if given button is clicked/selected by player
     '''
     def selected(self, mouse_pos):
@@ -46,8 +53,9 @@ class Button(pygame.sprite.Sprite):
         self.image.fill(self.onColor)
         # Draw the Change
         self.draw(screen)
-        # Play sound
-        pygame.mixer.Sound.play(self.sound)
+        # Play sound (if a sound has been provided)
+        if self.sound != None:
+            pygame.mixer.Sound.play(self.sound)
         # Update Display
         pygame.display.update()
         # Illuminate buttone to indicate button press is over
