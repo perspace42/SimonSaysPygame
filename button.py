@@ -23,14 +23,14 @@ class Button(pygame.sprite.Sprite):
     '''
     Draws button sprite onto pygame window when called
     '''
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface):
         # blit image here
         screen.blit(self.image,(self.rect.x, self.rect.y))
 
     '''
     Clears button sprite from the screen
     '''
-    def clear(self,screen):
+    def clear(self,screen: pygame.Surface):
         rect = pygame.Rect(self.xCor, self.yCor, self.rect.width, self.rect.height)
         pygame.draw.rect(screen,(0,0,0),rect)
 
@@ -48,7 +48,7 @@ class Button(pygame.sprite.Sprite):
     Illuminates button selected and plays corresponding sound.
     Sets button color back to default color after being illuminated.
     '''
-    def update(self, screen):
+    def update(self, screen: pygame.Surface):
         # Illuminate button to indicate it has been pressed
         self.image.fill(self.onColor)
         # Draw the Change

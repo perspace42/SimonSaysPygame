@@ -17,7 +17,7 @@ class Label:
         self.surface = self.update_text("")
     
     # Print the current time to the screen.
-    def update_time(self, screen, time_left):
+    def update_time(self, screen: pygame.Surface, time_left):
         # If a new digit has been passed to the function
         if self.currentDigit != time_left or self.currentDigit == 0:
             #Clear the old digit with a black rectangle
@@ -32,7 +32,7 @@ class Label:
         # Draw the digit
         self.draw(screen)
 
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface):
         screen.blit(self.surface, self.position)
 
     #Clear the old digit with a black rectangle
