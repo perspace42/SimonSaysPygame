@@ -244,23 +244,7 @@ def game_over():
                     selected = True
         
         CLOCK.tick(60)
-
-'''
-Executes game loop if script is selected as main
-'''
-def game_loop():
-    # draws buttons onto pygame screen
-    draw_board() 
-    # repeats cpu sequence if it's not empty
-    repeat_cpu_sequence() 
-    # cpu randomly chooses a new color
-    cpu_turn() 
-    # player tries to recreate cpu sequence
-    player_turn() 
-    # waits one second before repeating cpu sequence
-    pygame.time.wait(1000) 
-    CLOCK.tick(60)
-    
+   
 if __name__ == "__main__":
     # Game Loop
     while True:
